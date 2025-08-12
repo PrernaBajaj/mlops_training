@@ -4,7 +4,7 @@ from flask import Flask, request, jsonify
 import pandas as pd
 
 # Load the trained model
-with open('gbr_model.bin', 'rb') as f_in:
+with open('rf_model.bin', 'rb') as f_in:
     model = pickle.load(f_in)
     
 #Feature preparation
@@ -21,7 +21,7 @@ def prepare_features(ride):
 
 #Prediction
 def predict(features_df):
-    preds = gbr.predict(features_df)
+    preds = rf.predict(features_df)
     return float(preds[0])
 
 #API call
